@@ -1,4 +1,4 @@
-package todoList;
+package program;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class Program {
 		List<String> todoList = new ArrayList<>();
 		String task;
 		char response;
-		int taskPosition = 0;
+		//int taskPosition = 0;
 		boolean stopProgram = false;
 		
 		do {
@@ -30,9 +30,9 @@ public class Program {
 						sc.nextLine();
 						task = sc.nextLine();
 						todoList.add(task);
-						System.out.print("Add a new task? (s/n)");
+						System.out.print("Add a new task? (y/n)");
 						response = sc.next().charAt(0);
-					} while(response == 's' || response == 'S');
+					} while(response == 'y' || response == 'Y');
 					System.out.println();
 				break;
 				case 1:
@@ -41,7 +41,7 @@ public class Program {
 					actionNumber = sc.nextInt();
 					String removeTask = todoList.remove(actionNumber);
 					System.out.println(removeTask + " removed");
-					System.out.println("Back to main menu? (s/n)");
+					System.out.println("Back to main menu? (y/n)");
 					response = sc.next().charAt(0);
 						if (response == 'n' || response == 'N') {
 							stopProgram = true;
@@ -53,11 +53,10 @@ public class Program {
 					break;
 				case 3:
 					System.out.println();
-					for (String list : todoList) {
-						System.out.println(taskPosition +": " + list);
-						taskPosition += 1;
+					for (int i = 0; i < todoList.size(); i++) {
+						System.out.println(i +": " + todoList.get(i));
 					}
-					System.out.println("Back to main menu? (s/n)");
+					System.out.println("Back to main menu? (y/n)");
 					response = sc.next().charAt(0);
 						if (response == 'n' || response == 'N') {
 							stopProgram = true;
