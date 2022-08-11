@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import entity.Task;
+
 public class Program {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		List<String> todoList = new ArrayList<>();
-		String task;
+		List<Task> todoList = new ArrayList<>();
+		final Task task = new Task();
 		char response;
-		//int taskPosition = 0;
 		boolean stopProgram = false;
 		
 		do {
@@ -39,7 +40,7 @@ public class Program {
 					System.out.println();
 					System.out.print("Type the number of the task to be removed: ");
 					actionNumber = sc.nextInt();
-					String removeTask = todoList.remove(actionNumber);
+					final Task removeTask = todoList.remove(actionNumber);
 					System.out.println(removeTask + " removed");
 					System.out.println("Back to main menu? (y/n)");
 					response = sc.next().charAt(0);
