@@ -9,11 +9,10 @@ import entity.Task;
 public class Program {
 
 	public static void main(String[] args) {
-
+		
 		Scanner sc = new Scanner(System.in);
 		List<Task> todoList = new ArrayList<>();
-		final Task task = new Task();
-		char response;
+		String response = null;
 		boolean stopProgram = false;
 		
 		do {
@@ -28,12 +27,13 @@ public class Program {
 					do {
 						System.out.println();
 						System.out.print("New task: ");
+						final Task task = new Task();
 						sc.nextLine();
-						task = sc.nextLine();
+						task.setValue(sc.nextLine());
 						todoList.add(task);
 						System.out.print("Add a new task? (y/n)");
-						response = sc.next().charAt(0);
-					} while(response == 'y' || response == 'Y');
+						response = sc.next();
+					} while("y".equalsIgnoreCase(response)); //entra em um loop que enquanto não pressionar o Y, não continua
 					System.out.println();
 				break;
 				case 1:
@@ -43,14 +43,25 @@ public class Program {
 					final Task removeTask = todoList.remove(actionNumber);
 					System.out.println(removeTask + " removed");
 					System.out.println("Back to main menu? (y/n)");
-					response = sc.next().charAt(0);
-						if (response == 'n' || response == 'N') {
+					response = sc.next();
+						if ("n".equalsIgnoreCase(response)) {
 							stopProgram = true;
-						}
+						} //TODO colocar LOOP caso cliente digite uma letra diferente
 					break;
 				case 2:
 					System.out.print("Number of the task completed: ");
 					actionNumber = sc.nextInt();
+					for(int i = 0; i < todoList.size(); i++) {
+						if (i == actionNumber) {
+							todoList.get(i).setStatus(1);
+							break;
+						}
+					}
+					System.out.println("Back to main menu? (y/n)");
+					response = sc.next();
+						if ("n".equalsIgnoreCase(response)) {
+							stopProgram = true;
+						} //TODO colocar LOOP caso cliente digite uma letra diferente
 					break;
 				case 3:
 					System.out.println();
@@ -58,8 +69,8 @@ public class Program {
 						System.out.println(i +": " + todoList.get(i));
 					}
 					System.out.println("Back to main menu? (y/n)");
-					response = sc.next().charAt(0);
-						if (response == 'n' || response == 'N') {
+					response = sc.next();
+						if ("n".equalsIgnoreCase(response)) {
 							stopProgram = true;
 						}
 					break;
@@ -77,4 +88,5 @@ public class Program {
 		
 		sc.close();
 		}		
+		
 	}
