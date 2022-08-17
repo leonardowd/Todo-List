@@ -46,14 +46,18 @@ public class Program {
 					response = sc.next();
 						if ("n".equalsIgnoreCase(response)) {
 							stopProgram = true;
-						} //TODO colocar LOOP caso cliente digite uma letra diferente
+						} else if ("y".equalsIgnoreCase(response)) {
+							break;
+						} else {
+							System.out.println("Type a valid response");
+						}
 					break;
 				case 2:
-					System.out.print("Number of the task completed: ");
+					System.out.print("Number of the task to be completed: ");
 					actionNumber = sc.nextInt();
 					for(int i = 0; i < todoList.size(); i++) {
 						if (i == actionNumber) {
-							todoList.get(i).setStatus(1);
+							todoList.get(i).setStatus(" (DONE)");
 							break;
 						}
 					}
@@ -61,12 +65,17 @@ public class Program {
 					response = sc.next();
 						if ("n".equalsIgnoreCase(response)) {
 							stopProgram = true;
-						} //TODO colocar LOOP caso cliente digite uma letra diferente
+						} else if ("y".equalsIgnoreCase(response)) {
+							break;
+						} else {
+							System.out.println("Type a valid response");
+						}
+						
 					break;
 				case 3:
 					System.out.println();
 					for (int i = 0; i < todoList.size(); i++) {
-						System.out.println(i +": " + todoList.get(i));
+						System.out.println(i +": " + todoList.get(i).getStatus() + todoList.get(i));
 					}
 					System.out.println("Back to main menu? (y/n)");
 					response = sc.next();

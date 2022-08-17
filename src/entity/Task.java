@@ -2,10 +2,10 @@ package entity;
 
 public class Task {
 
-	private int status = 0;
+	private String status = "";
 	private String value;
 	
-	public Task(String value, int status) {
+	public Task(String value, String status) {
 		this.value = value;
 		this.status = status;
 	}
@@ -14,11 +14,11 @@ public class Task {
 		
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -32,13 +32,12 @@ public class Task {
 	
 	public boolean isCompleted() {
 		
-		return status == 1;
+		return status == "(DONE)";
 	}
 
 	@Override
 	public String toString() {
-		return "Task=" + value;
+		return " " + value;
 	}
-	
 	
 }
